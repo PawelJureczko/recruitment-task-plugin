@@ -1,4 +1,4 @@
-<?php
+d<?php
 
 /**
  * @package pawel-jureczko-recruitment-task-plugin
@@ -37,7 +37,7 @@ function addThemeScript() {
 
 function addGoogleFont() {
   $googleFont = '<link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">';
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Reggae+One&display=swap" rel="stylesheet">';
   echo $googleFont;
 
 //font-family: 'Reggae One', cursive;
@@ -50,17 +50,38 @@ function mainToDoList() {
       <div class="row">
         <div class="col-12 text-center">
           <h1>ToDoList</h1>
-          <form class="d-flex">
-            <label for="task">Add new task:</label>
-              <input type="text" name="task" id="task" value="" placeholder="Enter task here">
-              <input type="submit" value="submit">
+          <form autocomplete="off" class="d-flex flex-column flex-xl-row justify-content-between align-items-center px-xl-5">
+            <label for="task" class="d-flex justify-content-center align-items-center">Add new task:</label>
+            <input type="text" name="task" id="task" value="" placeholder="Enter task here">
+            <input type="submit" value="submit">
           </form>
         </div>
-        <div class="col-12">
-          <ul class="todolist__list">
-            <li>first task </li>
-            <li>second task</li>
-            <li>third task</li>
+        <div class="col-12 my-5">
+          <ul class="todolist__list px-xl-5">
+            <li>
+              <span>first task</span>
+              <div class="todolist__button-wrapper d-flex">
+                <div class="todolist__button todolist__button--completed"></div>
+                <div class="todolist__button todolist__button--edit"></div>
+                <div class="todolist__button todolist__button--delete"></div>
+              </div>
+            </li>
+            <li>
+              <span>second task</span>
+              <div class="todolist__button-wrapper d-flex">
+                <div class="todolist__button todolist__button--completed"></div>
+                <div class="todolist__button todolist__button--edit"></div>
+                <div class="todolist__button todolist__button--delete"></div>
+              </div>
+            </li>
+            <li>
+              <span>third task</span>
+              <div class="todolist__button-wrapper d-flex">
+                <div class="todolist__button todolist__button--completed"></div>
+                <div class="todolist__button todolist__button--edit"></div>
+                <div class="todolist__button todolist__button--delete"></div>
+              </div>
+            </li>
           </ul>
         </div>
       </div>

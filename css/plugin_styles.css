@@ -1,5 +1,7 @@
 .todolist {
   background: linear-gradient(rgb(173, 213, 230), rgb(210, 210, 210));
+  border-radius: 5px;
+  box-shadow: 10px 5px 8px 10px #ece9e9;
 }
 
 @media screen and (min-width: 1200px) {
@@ -9,15 +11,104 @@
 }
 
 .todolist h1 {
-  color: red;
+  color: #cd2653;
   font-size: 48px;
   font-family: 'Reggae One', cursive !important;
 }
 
 .todolist ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todolist ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  padding: 0 25px;
+  width: 100%;
+  min-height: 56px;
+  background-color:white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out all;
 }
 
 .todolist h1::before {
   display: none !important;
+}
+
+.todolist input[type=text] {
+  border: 1px solid #dcd7ca;
+  width: 50%;
+  background-color: white;
+}
+
+.todolist input[type=text]:focus,
+.todolist input[type=text]:active {
+  outline: none;
+  border: 1px solid #dcd7ca;
+  background: #fcfcfb;
+}
+
+.todolist input[type=text]:focus::placeholder,
+.todolist input[type=text]:active::placeholder {
+  color: transparent;
+}
+
+.todolist .todolist__button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin: 0 10px 0;
+  transition: 0.2s ease-in-out all;
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.todolist .todolist__button--delete {
+  background-image: url("../assets/delete-icon.svg");
+  background-color: red;
+  background-position: 9px 8px;
+}
+
+.todolist .todolist__button--edit {
+  background-image: url("../assets/edit-icon.svg");
+  background-color: rgb(96, 155, 175);
+  background-position: 10px 9px;
+}
+
+.todolist .todolist__button--completed {
+  background-image: url("../assets/done-icon.svg");
+  background-color: green;
+  background-position: 10px 10px;
+}
+
+.todolist .todolist__button:hover {
+  transform: scale(1.15);
+}
+
+.todolist label {
+  min-width: 20%;
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+}
+
+.todolist input[type=submit] {
+  min-width: 20%;
+  border-radius: 10px;
+  background-color: #cd2653;
+  transition: 0.2s all ease-in-out;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+}
+
+.todolist input[type=submit]:hover {
+  background-color: #701830;
+  text-decoration: none;
 }
