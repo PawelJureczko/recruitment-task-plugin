@@ -27,27 +27,41 @@ function addThemeStyles() {
 
 function todoPJ_enqueueBootstrapCSS()
 {
-    // CSS
     wp_register_style('prefix_bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
     wp_enqueue_style('prefix_bootstrap');
 }
 
 function addThemeScript() {
-
   wp_enqueue_script('js-file', plugin_dir_url(__FILE__).'/js/plugin_pj_script.js', '', '1.0.0', true);
+}
+
+function addGoogleFont() {
+  $googleFont = '<link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">';
+  echo $googleFont;
+
+//font-family: 'Reggae One', cursive;
 }
 
 function mainToDoList() {
   return '
-  <div class="another-test-file" id="only-for-test">
-    <div class="container">
+  <div class="todolist">
+    <div class="container pt-3">
       <div class="row">
-        <div class="col-6">
-          <h1>Hello World!</h1>
+        <div class="col-12 text-center">
+          <h1>ToDoList</h1>
+          <form class="d-flex">
+            <label for="task">Add new task:</label>
+              <input type="text" name="task" id="task" value="" placeholder="Enter task here">
+              <input type="submit" value="submit">
+          </form>
         </div>
-        <div class="col-6">
-          <h1>Another Hello World!</h1>
-          <button class="btn btn--testowo">asdasd</button>
+        <div class="col-12">
+          <ul class="todolist__list">
+            <li>first task </li>
+            <li>second task</li>
+            <li>third task</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -58,5 +72,6 @@ function mainToDoList() {
 add_action('wp_enqueue_scripts', 'addThemeStyles');
 add_action('wp_enqueue_scripts', 'addThemeScript');
 add_action('wp_head', 'todoPJ_enqueueBootstrapCSS');
+add_action('wp_head', 'addGoogleFont');
 
 add_shortcode('example', 'mainToDoList');

@@ -1,5 +1,8 @@
-const onlyForTest = document.querySelector('#only-for-test');
+const onlyForTest = document.querySelector('.todolist .todolist__list');
+const allTasks = onlyForTest.querySelectorAll('li');
 
-onlyForTest.addEventListener("click", function() {
-  console.log('test');
-})
+
+allTasks.forEach(item =>
+  item.addEventListener("click", function() {
+    console.log(item);
+  }));

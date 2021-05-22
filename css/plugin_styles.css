@@ -1,3 +1,23 @@
-.another-test-file h1 {
-  color: blue;
+.todolist {
+  background: linear-gradient(rgb(173, 213, 230), rgb(210, 210, 210));
+}
+
+@media screen and (min-width: 1200px) {
+  .todolist {
+    min-width: 960px;
+  }
+}
+
+.todolist h1 {
+  color: red;
+  font-size: 48px;
+  font-family: 'Reggae One', cursive !important;
+}
+
+.todolist ul {
+  list-style-type: none;
+}
+
+.todolist h1::before {
+  display: none !important;
 }
