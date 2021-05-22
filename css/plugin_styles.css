@@ -22,6 +22,11 @@
   padding: 0;
 }
 
+.todolist ul .completed {
+  background-color: lightgreen;
+  text-decoration: line-through;
+}
+
 .todolist ul li {
   display: flex;
   justify-content: space-between;
