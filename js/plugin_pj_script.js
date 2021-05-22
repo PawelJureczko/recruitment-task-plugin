@@ -1,7 +1,12 @@
 const onlyForTest = document.querySelector('.todolist .todolist__list');
 const allTasks = onlyForTest.querySelectorAll('li');
 const todoButtons = document.querySelectorAll('.todolist__button');
+const submitButton = document.querySelector('.todolist ')
 
+
+const createLiElement = () => {
+
+}
 
 todoButtons.forEach(item => {
 
@@ -13,10 +18,3 @@ todoButtons.forEach(item => {
     }
   })
 })
-
-// allTasks.forEach(item =>
-//   item.addEventListener("click", function() {
-//     console.log('hi');
-
-
-//   }));

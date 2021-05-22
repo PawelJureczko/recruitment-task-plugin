@@ -24,7 +24,21 @@
 
 .todolist ul .completed {
   background-color: lightgreen;
-  text-decoration: line-through;
+  color: green;
+}
+
+.todolist ul .completed span {
+  position: relative;
+}
+
+.todolist ul .completed span::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  right: -28px;
+  width: 20px;
+  height: 20px;
+  background-image: url("../assets/done-icon-green.svg");
 }
 
 .todolist ul li {
@@ -39,6 +53,8 @@
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s ease-in-out all;
+  font-family: 'Montserrat';
+  font-size: 16px;
 }
 
 .todolist h1::before {
@@ -48,7 +64,9 @@
 .todolist input[type=text] {
   border: 1px solid #dcd7ca;
   width: 50%;
+  height: 56px;
   background-color: white;
+  padding-left: 16px;
 }
 
 .todolist input[type=text]:focus,
@@ -111,6 +129,8 @@
   transition: 0.2s all ease-in-out;
   font-family: 'Montserrat';
   text-transform: uppercase;
+  height: 56px;
+  border: none;
 }
 
 .todolist input[type=submit]:hover {
