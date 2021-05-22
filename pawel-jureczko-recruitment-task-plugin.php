@@ -1,4 +1,4 @@
-d<?php
+<?php
 
 /**
  * @package pawel-jureczko-recruitment-task-plugin
