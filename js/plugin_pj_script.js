@@ -28,25 +28,35 @@ const editToDoValue = (item, valueToDo, input) => {
   input.value = valueToDo;
 }
 
-const saveChanges = (item, initialValue, mainLi) => {
+const saveChanges = (item) => {
   const saveButton = item.querySelector('.todolist__single-todo-edit').querySelector('.btn-save');
   const inputValue = item.querySelector('input');
   let hasChanged = false;
   let finalValue;
+
+  const proceedChanges = (hasChanged) => {
+    if (hasChanged) {
+      item.querySelector('.todolist__single-todo-wrapper').querySelector('span').innerText = finalValue;
+      closeEdit(item);
+    } else {
+      closeEdit(item);
+    }
+  }
+
 
   inputValue.addEventListener("change", function(e) {
     finalValue = e.target.value;
     hasChanged = true;
   })
 
-  saveButton.addEventListener('click', function() {
-    if (hasChanged) {
-      mainLi.querySelector('.todolist__single-todo-wrapper').querySelector('span').innerText = finalValue;
-      closeEdit(mainLi);
-    } else {
-      console.log('nie');
-      closeEdit(mainLi);
+  inputValue.addEventListener("keyup", function(e) {
+    if(e.keyCode === 13) {
+      proceedChanges(hasChanged);
     }
+  })
+
+  saveButton.addEventListener('click', function() {
+    proceedChanges(hasChanged);
   })
 
 }
@@ -55,9 +65,9 @@ todoButtons.forEach(item => {
 
   item.addEventListener("click", function () {
     if (item.classList.contains('todolist__button--delete')) {
-      item.parentElement.parentElement.remove();
+      item.parentElement.parentElement.parentElement.remove();
     } else if (item.classList.contains("todolist__button--completed")) {
-      item.parentElement.parentElement.classList.toggle('completed');
+      item.parentElement.parentElement.parentElement.classList.toggle('completed');
     } else if (item.classList.contains("todolist__button--edit")) {
       const mainLi = item.parentElement.parentElement.parentElement;
       const toDoSpan = mainLi.querySelector('.todolist__single-todo-wrapper').querySelector('span');
@@ -69,7 +79,7 @@ todoButtons.forEach(item => {
       mainLi.querySelector('.todolist__single-todo-wrapper').classList.add('d-none');
       cancelButton(mainLi);
       editToDoValue(item, singleTodoValue, inputTodo);
-      saveChanges(mainLi, singleTodoValue, mainLi);
+      saveChanges(mainLi);
     }
 
   })
