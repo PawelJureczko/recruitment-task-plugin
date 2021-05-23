@@ -96,6 +96,8 @@
 .todolist .todolist__single-todo-edit input[type=text] {
   border: none;
   width: 100%;
+  border: 1px solid black;
+  margin: 5px 0;
 }
 
 .todolist .todolist__single-todo-edit .btn {
@@ -172,7 +174,6 @@
   font-family: 'Montserrat';
   text-transform: uppercase;
   height: 56px;
-  border: none;
 }
 
 .todolist input[type=submit]:hover {

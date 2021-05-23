@@ -18,17 +18,37 @@ const cancelButton = (item) => {
   })
 }
 
+const closeEdit = (item) => {
+  item.querySelector('.todolist__single-todo-wrapper').classList.remove('d-none');
+  item.querySelector('.todolist__single-todo-wrapper').classList.add('d-flex');
+  item.querySelector('.todolist__single-todo-edit').classList.add('d-none');
+}
+
 const editToDoValue = (item, valueToDo, input) => {
   input.value = valueToDo;
 }
 
-const saveChanges = (item) => {
+const saveChanges = (item, initialValue, mainLi) => {
   const saveButton = item.querySelector('.todolist__single-todo-edit').querySelector('.btn-save');
   const inputValue = item.querySelector('input');
+  let hasChanged = false;
+  let finalValue;
 
   inputValue.addEventListener("change", function(e) {
-    console.log(e.target.value);
+    finalValue = e.target.value;
+    hasChanged = true;
   })
+
+  saveButton.addEventListener('click', function() {
+    if (hasChanged) {
+      mainLi.querySelector('.todolist__single-todo-wrapper').querySelector('span').innerText = finalValue;
+      closeEdit(mainLi);
+    } else {
+      console.log('nie');
+      closeEdit(mainLi);
+    }
+  })
+
 }
 
 todoButtons.forEach(item => {
@@ -49,7 +69,7 @@ todoButtons.forEach(item => {
       mainLi.querySelector('.todolist__single-todo-wrapper').classList.add('d-none');
       cancelButton(mainLi);
       editToDoValue(item, singleTodoValue, inputTodo);
-      saveChanges(mainLi);
+      saveChanges(mainLi, singleTodoValue, mainLi);
     }
 
   })
