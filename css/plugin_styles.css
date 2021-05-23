@@ -82,6 +82,47 @@
   color: transparent;
 }
 
+.todolist .todolist__single-todo-wrapper {
+  width: 100%;
+}
+
+.todolist .todolist__single-todo-edit {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todolist .todolist__single-todo-edit input[type=text] {
+  border: none;
+  width: 100%;
+}
+
+.todolist .todolist__single-todo-edit .btn {
+  min-width: 10%;
+  border-radius: 10px;
+  transition: 0.2s all ease-in-out;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  text-transform: uppercase;
+  height: 46px;
+  border: none;
+  transition: 0.2s ease-in-out all;
+  margin: 0 10px;
+}
+
+.todolist .todolist__single-todo-edit .btn:hover {
+  transform: scale(1.05);
+}
+
+.todolist .todolist__single-todo-edit .btn-save {
+  background-color: green;
+}
+
+.todolist .todolist__single-todo-cancel .btn-cancel {
+  background-color: #cd2653;
+}
+
 .todolist .todolist__button {
   width: 35px;
   height: 35px;

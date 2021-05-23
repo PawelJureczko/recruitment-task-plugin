@@ -59,28 +59,49 @@ function mainToDoList() {
         <div class="col-12 my-5">
           <ul class="todolist__list px-xl-5">
             <li>
-              <span>first task</span>
-              <div class="todolist__button-wrapper d-flex">
-                <div class="todolist__button todolist__button--completed"></div>
-                <div class="todolist__button todolist__button--edit"></div>
-                <div class="todolist__button todolist__button--delete"></div>
-              </div>
+              <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
+                <span>first task</span>
+                <div class="todolist__button-wrapper d-flex">
+                  <div class="todolist__button todolist__button--completed"></div>
+                  <div class="todolist__button todolist__button--edit"></div>
+                  <div class="todolist__button todolist__button--delete"></div>
+                </div>
+              </div> <!-- todlist__single-todo-wrapper -->
+              <div class="todolist__single-todo-edit d-none">
+                <input type="text" name="task-edit" value="">
+                <button class="btn btn-save">save</button>
+                <button class="btn btn-cancel">cancel</button>
+              </div> <!-- todlist__single-todo-edit -->
             </li>
             <li>
-              <span>second task</span>
-              <div class="todolist__button-wrapper d-flex">
-                <div class="todolist__button todolist__button--completed"></div>
-                <div class="todolist__button todolist__button--edit"></div>
-                <div class="todolist__button todolist__button--delete"></div>
-              </div>
+              <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
+                <span>second task</span>
+                <div class="todolist__button-wrapper d-flex">
+                  <div class="todolist__button todolist__button--completed"></div>
+                  <div class="todolist__button todolist__button--edit"></div>
+                  <div class="todolist__button todolist__button--delete"></div>
+                </div>
+              </div> <!-- todlist__single-todo-wrapper -->
+              <div class="todolist__single-todo-edit d-none">
+                <input type="text" name="task-edit" value="">
+                <button class="btn btn-save">save</button>
+                <button class="btn btn-cancel">cancel</button>
+              </div> <!-- todlist__single-todo-edit -->
             </li>
             <li>
-              <span>third task</span>
-              <div class="todolist__button-wrapper d-flex">
-                <div class="todolist__button todolist__button--completed"></div>
-                <div class="todolist__button todolist__button--edit"></div>
-                <div class="todolist__button todolist__button--delete"></div>
-              </div>
+              <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
+                <span>third task</span>
+                <div class="todolist__button-wrapper d-flex">
+                  <div class="todolist__button todolist__button--completed"></div>
+                  <div class="todolist__button todolist__button--edit"></div>
+                  <div class="todolist__button todolist__button--delete"></div>
+                </div>
+              </div> <!-- todlist__single-todo-wrapper -->
+              <div class="todolist__single-todo-edit d-none">
+                <input type="text" name="task-edit" value="">
+                <button class="btn btn-save">save</button>
+                <button class="btn btn-cancel">cancel</button>
+              </div> <!-- todlist__single-todo-edit -->
             </li>
           </ul>
         </div>
