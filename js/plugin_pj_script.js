@@ -16,8 +16,19 @@ const cancelButton = (item) => {
       item.querySelector('.todolist__single-todo-wrapper').classList.add('d-flex');
       item.querySelector('.todolist__single-todo-wrapper').classList.remove('d-none');
   })
+}
 
+const editToDoValue = (item, valueToDo, input) => {
+  input.value = valueToDo;
+}
 
+const saveChanges = (item) => {
+  const saveButton = item.querySelector('.todolist__single-todo-edit').querySelector('.btn-save');
+  const inputValue = item.querySelector('input');
+
+  inputValue.addEventListener("change", function(e) {
+    console.log(e.target.value);
+  })
 }
 
 todoButtons.forEach(item => {
@@ -29,10 +40,16 @@ todoButtons.forEach(item => {
       item.parentElement.parentElement.classList.toggle('completed');
     } else if (item.classList.contains("todolist__button--edit")) {
       const mainLi = item.parentElement.parentElement.parentElement;
+      const toDoSpan = mainLi.querySelector('.todolist__single-todo-wrapper').querySelector('span');
+      const singleTodoValue = toDoSpan.innerText;
+      const inputTodo = mainLi.querySelector('.todolist__single-todo-edit').querySelector('input');
+
       mainLi.querySelector('.todolist__single-todo-edit').classList.remove('d-none');
       mainLi.querySelector('.todolist__single-todo-wrapper').classList.remove('d-flex');
       mainLi.querySelector('.todolist__single-todo-wrapper').classList.add('d-none');
       cancelButton(mainLi);
+      editToDoValue(item, singleTodoValue, inputTodo);
+      saveChanges(mainLi);
     }
 
   })
