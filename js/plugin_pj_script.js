@@ -3,18 +3,30 @@ let allTasks = todolistUl.querySelectorAll('li');
 let todoButtons = document.querySelectorAll('.todolist__button');
 const newTodoInput = document.querySelector('.todolist input[name="task"]');
 const submitButton = document.querySelector('.todolist form .btn-submit');
+let newValue;
+
+newTodoInput.addEventListener("change", function (e) {
+  newValue = e.target.value;
+})
 
 
-
+const addNewItem = (e) => {
+  e.preventDefault();
+  if (newValue) {
+    let newClone = todolistUl.querySelector('li').cloneNode(true);
+    newClone.querySelector('.todolist__single-todo-wrapper span').innerText = newValue;
+    todolistUl.appendChild(newClone);
+    allTasks = todolistUl.querySelectorAll('li');
+    todoButtons = document.querySelectorAll('.todolist__button');
+    loadbuttons();
+  } else {
+    alert('Hey, sir, you need TO DO something!');
+  }
+}
 
 submitButton.addEventListener("click", function(e) {
-  e.preventDefault();
-  let newClone = todolistUl.querySelector('li').cloneNode(true);
-  todolistUl.appendChild(newClone);
-  allTasks = todolistUl.querySelectorAll('li');
-  todoButtons = document.querySelectorAll('.todolist__button');
-  loadbuttons();
-  console.log(allTasks);
+  addNewItem(e);
+  newTodoInput.value="";
 })
 
 
@@ -89,7 +101,7 @@ const loadbuttons = () => {
       mainLi.querySelector('.todolist__single-todo-wrapper').classList.remove('d-flex');
       mainLi.querySelector('.todolist__single-todo-wrapper').classList.add('d-none');
       cancelButton(mainLi);
-      editToDoValue(item, singleTodoValue, inputTodo);
+      editToDoValue(singleTodoValue, inputTodo);
       saveChanges(mainLi);
     }
 
