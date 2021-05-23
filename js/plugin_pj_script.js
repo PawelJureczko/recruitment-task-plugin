@@ -34,7 +34,7 @@ const saveChanges = (item) => {
   let hasChanged = false;
   let finalValue;
 
-  const proceedChanges = (hasChanged) => {
+  const proceedChanges = (hasChanged, item) => {
     if (hasChanged) {
       item.querySelector('.todolist__single-todo-wrapper').querySelector('span').innerText = finalValue;
       closeEdit(item);
@@ -51,12 +51,12 @@ const saveChanges = (item) => {
 
   inputValue.addEventListener("keyup", function(e) {
     if(e.keyCode === 13) {
-      proceedChanges(hasChanged);
+      proceedChanges(hasChanged, item);
     }
   })
 
   saveButton.addEventListener('click', function() {
-    proceedChanges(hasChanged);
+    proceedChanges(hasChanged, item);
   })
 
 }
