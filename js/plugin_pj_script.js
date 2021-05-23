@@ -1,12 +1,22 @@
-const onlyForTest = document.querySelector('.todolist .todolist__list');
-const allTasks = onlyForTest.querySelectorAll('li');
-const todoButtons = document.querySelectorAll('.todolist__button');
-const submitButton = document.querySelector('.todolist ')
+const todolistUl = document.querySelector('.todolist .todolist__list');
+let allTasks = todolistUl.querySelectorAll('li');
+let todoButtons = document.querySelectorAll('.todolist__button');
+const newTodoInput = document.querySelector('.todolist input[name="task"]');
+const submitButton = document.querySelector('.todolist form .btn-submit');
 
 
-const createLiElement = () => {
 
-}
+
+submitButton.addEventListener("click", function(e) {
+  e.preventDefault();
+  let newClone = todolistUl.querySelector('li').cloneNode(true);
+  todolistUl.appendChild(newClone);
+  allTasks = todolistUl.querySelectorAll('li');
+  todoButtons = document.querySelectorAll('.todolist__button');
+  loadbuttons();
+  console.log(allTasks);
+})
+
 
 const cancelButton = (item) => {
   const editButton = item.querySelector('.todolist__single-todo-edit').querySelector('.btn-cancel');
@@ -24,7 +34,7 @@ const closeEdit = (item) => {
   item.querySelector('.todolist__single-todo-edit').classList.add('d-none');
 }
 
-const editToDoValue = (item, valueToDo, input) => {
+const editToDoValue = (valueToDo, input) => {
   input.value = valueToDo;
 }
 
@@ -61,7 +71,8 @@ const saveChanges = (item) => {
 
 }
 
-todoButtons.forEach(item => {
+const loadbuttons = () => {
+  todoButtons.forEach(item => {
 
   item.addEventListener("click", function () {
     if (item.classList.contains('todolist__button--delete')) {
@@ -84,4 +95,6 @@ todoButtons.forEach(item => {
 
   })
 })
+}
 
+loadbuttons();

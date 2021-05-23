@@ -53,7 +53,7 @@ function mainToDoList() {
           <form autocomplete="off" class="d-flex flex-column flex-xl-row justify-content-between align-items-center px-xl-5">
             <label for="task" class="d-flex justify-content-center align-items-center">Add new task:</label>
             <input type="text" name="task" id="task" value="" placeholder="Enter task here">
-            <input type="submit" value="submit">
+            <input type="submit" class="btn-submit" value="submit">
           </form>
         </div>
         <div class="col-12 my-5">
