@@ -49,19 +49,20 @@ function mainToDoList() {
     <div class="container pt-3">
       <div class="row">
         <div class="col-12 text-center">
-          <h1>ToDoList</h1>
+          <h2>ToDoList</h2>
           <form autocomplete="off" class="d-flex flex-column flex-xl-row justify-content-between align-items-center px-xl-5">
             <label for="task" class="d-flex justify-content-center align-items-center">Add new task:</label>
-            <input type="text" name="task" id="task" value="" placeholder="Enter task here">
-            <input type="submit" class="btn-submit" value="submit">
+            <input type="text" name="task" class="mt-5 mt-md-0" id="task" value="" placeholder="Enter task here">
+            <input type="submit" class="btn-submit mt-3 mt-xl-0" value="submit">
           </form>
+          <span class="alert d-none">Task can not be empty, Sir!</span>
         </div>
         <div class="col-12 my-5">
           <ul class="todolist__list px-xl-5">
             <li>
               <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
                 <span>first task</span>
-                <div class="todolist__button-wrapper d-flex">
+                <div class="todolist__button-wrapper d-flex align-items-between align-items-md-center flex-column flex-md-row">
                   <div class="todolist__button todolist__button--completed"></div>
                   <div class="todolist__button todolist__button--edit"></div>
                   <div class="todolist__button todolist__button--delete"></div>
@@ -69,14 +70,16 @@ function mainToDoList() {
               </div> <!-- todlist__single-todo-wrapper -->
               <div class="todolist__single-todo-edit d-none">
                 <input type="text" name="task-edit" value="">
-                <button class="btn btn-save">save</button>
-                <button class="btn btn-cancel">cancel</button>
+                <div class="d-flex flex-column flex-md-row">
+                  <button class="btn btn-save">save</button>
+                  <button class="btn btn-cancel">cancel</button>
+                </div>
               </div> <!-- todlist__single-todo-edit -->
             </li>
             <li>
               <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
                 <span>second task</span>
-                <div class="todolist__button-wrapper d-flex">
+                <div class="todolist__button-wrapper d-flex align-items-between align-items-md-center flex-column flex-md-row">
                   <div class="todolist__button todolist__button--completed"></div>
                   <div class="todolist__button todolist__button--edit"></div>
                   <div class="todolist__button todolist__button--delete"></div>
@@ -84,14 +87,16 @@ function mainToDoList() {
               </div> <!-- todlist__single-todo-wrapper -->
               <div class="todolist__single-todo-edit d-none">
                 <input type="text" name="task-edit" value="">
-                <button class="btn btn-save">save</button>
-                <button class="btn btn-cancel">cancel</button>
+                <div class="d-flex flex-column flex-md-row">
+                  <button class="btn btn-save">save</button>
+                  <button class="btn btn-cancel">cancel</button>
+                </div>
               </div> <!-- todlist__single-todo-edit -->
             </li>
             <li>
               <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
                 <span>third task</span>
-                <div class="todolist__button-wrapper d-flex">
+                <div class="todolist__button-wrapper d-flex align-items-between align-items-md-center flex-column flex-md-row">
                   <div class="todolist__button todolist__button--completed"></div>
                   <div class="todolist__button todolist__button--edit"></div>
                   <div class="todolist__button todolist__button--delete"></div>
@@ -99,8 +104,10 @@ function mainToDoList() {
               </div> <!-- todlist__single-todo-wrapper -->
               <div class="todolist__single-todo-edit d-none">
                 <input type="text" name="task-edit" value="">
-                <button class="btn btn-save">save</button>
-                <button class="btn btn-cancel">cancel</button>
+                <div class="d-flex flex-column flex-md-row">
+                  <button class="btn btn-save">save</button>
+                  <button class="btn btn-cancel">cancel</button>
+                </div>
               </div> <!-- todlist__single-todo-edit -->
             </li>
           </ul>

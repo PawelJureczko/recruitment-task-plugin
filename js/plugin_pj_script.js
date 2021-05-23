@@ -4,6 +4,7 @@ let todoButtons = document.querySelectorAll('.todolist__button');
 const newTodoInput = document.querySelector('.todolist input[name="task"]');
 const submitButton = document.querySelector('.todolist form .btn-submit');
 let newValue;
+const emptyTaskAlert = document.querySelector('.todolist .alert');
 
 newTodoInput.addEventListener("change", function (e) {
   newValue = e.target.value;
@@ -19,14 +20,16 @@ const addNewItem = (e) => {
     allTasks = todolistUl.querySelectorAll('li');
     todoButtons = document.querySelectorAll('.todolist__button');
     loadbuttons();
+    emptyTaskAlert.classList.add('d-none');
   } else {
-    alert('Hey, sir, you need TO DO something!');
+    emptyTaskAlert.classList.remove('d-none');
   }
 }
 
 submitButton.addEventListener("click", function(e) {
   addNewItem(e);
   newTodoInput.value="";
+  newValue="";
 })
 
 

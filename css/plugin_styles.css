@@ -4,13 +4,13 @@
   box-shadow: 10px 5px 8px 10px #ece9e9;
 }
 
-@media screen and (min-width: 1200px) {
-  .todolist {
-    min-width: 960px;
-  }
+.todolist .alert {
+  font-family: 'Montserrat';
+  color: red;
+  font-size: 15px;
 }
 
-.todolist h1 {
+.todolist h2 {
   color: #cd2653;
   font-size: 48px;
   font-family: 'Reggae One', cursive !important;
@@ -101,7 +101,7 @@
 }
 
 .todolist .todolist__single-todo-edit .btn {
-  min-width: 10%;
+  min-width: 80px;
   border-radius: 10px;
   transition: 0.2s all ease-in-out;
   font-family: 'Montserrat';
@@ -167,7 +167,7 @@
 }
 
 .todolist input[type=submit] {
-  min-width: 20%;
+  min-width: 175px;
   border-radius: 10px;
   background-color: #cd2653;
   transition: 0.2s all ease-in-out;
@@ -179,4 +179,55 @@
 .todolist input[type=submit]:hover {
   background-color: #701830;
   text-decoration: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .todolist {
+    min-width: 960px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .todolist {
+    min-width: 580px;
+  }
+
+  .todolist input[type=submit] {
+    min-width: 60%;
+  }
+
+  .todolist form input[type=text] {
+    min-width: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .todolist {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .todolist input[type=submit] {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .todolist form input[type=text] {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .todolist ul li {
+    min-height: 120px;
+    padding-right: 0;
+  }
+
+  .todolist .todolist__button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .todolist .todolist__single-todo-edit .btn {
+    margin: 5px;
+  }
 }
