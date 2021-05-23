@@ -6,17 +6,88 @@ const submitButton = document.querySelector('.todolist form .btn-submit');
 let newValue;
 const emptyTaskAlert = document.querySelector('.todolist .alert');
 
+// reads value from main input and keeps it in newValue variable
 newTodoInput.addEventListener("change", function (e) {
   newValue = e.target.value;
 })
 
+// creates new empty li item which is able to contain new todo
+const createNewItem = () => {
+  let parent = document.createElement("li");
+  let todoWrapper = document.createElement("div");
+  let editWrapper = document.createElement("div");
+  let taskName = document.createElement("span");
+  let buttonWrapper = document.createElement("div");
+  let buttonCompleted = document.createElement("div");
+  let buttonEdit = document.createElement("div");
+  let buttonDelete = document.createElement("div");
+  let editInput = document.createElement("input");
+  let editButtonWrapper = document.createElement("div");
+  let buttonSave = document.createElement("button");
+  let buttonCancel = document.createElement("button");
 
+  buttonSave.classList.add("btn");
+  buttonSave.classList.add("btn-save");
+  buttonSave.innerText = "Save";
+
+  buttonCancel.classList.add("btn");
+  buttonCancel.classList.add("btn-cancel");
+  buttonCancel.innerText = "Cancel";
+
+  editInput.setAttribute("type", "text");
+  editInput.setAttribute("name", "task-edit");
+  editInput.setAttribute("value", "");
+
+  editButtonWrapper.classList.add("d-flex");
+  editButtonWrapper.classList.add("flex-column");
+  editButtonWrapper.classList.add("flex-md-row");
+
+  todoWrapper.classList.add("todolist__single-todo-wrapper");
+  todoWrapper.classList.add("d-flex");
+  todoWrapper.classList.add("justify-content-between");
+  todoWrapper.classList.add("align-items-center");
+
+  editWrapper.classList.add("todolist__single-todo-edit");
+  editWrapper.classList.add("d-none");
+
+  buttonWrapper.classList.add("todolist__button-wrapper");
+  buttonWrapper.classList.add("d-flex");
+  buttonWrapper.classList.add("align-items-between");
+  buttonWrapper.classList.add("align-items-md-center");
+  buttonWrapper.classList.add("flex-column");
+  buttonWrapper.classList.add("flex-md-row");
+
+  buttonCompleted.classList.add("todolist__button");
+  buttonCompleted.classList.add("todolist__button--completed");
+
+  buttonEdit.classList.add("todolist__button");
+  buttonEdit.classList.add("todolist__button--edit");
+
+  buttonDelete.classList.add("todolist__button");
+  buttonDelete.classList.add("todolist__button--delete");
+
+  buttonWrapper.appendChild(buttonCompleted);
+  buttonWrapper.appendChild(buttonEdit);
+  buttonWrapper.appendChild(buttonDelete);
+  todoWrapper.appendChild(taskName);
+  todoWrapper.appendChild(buttonWrapper);
+  editWrapper.appendChild(editInput);
+  editButtonWrapper.appendChild(buttonSave);
+  editButtonWrapper.appendChild(buttonCancel);
+  editWrapper.appendChild(editButtonWrapper);
+  parent.appendChild(todoWrapper);
+  parent.appendChild(editWrapper);
+
+  return parent;
+}
+
+// if newValue isn't empty, adds new item to ul list. If it's empty, removes d-none class from alert. It triggers loadButtons function so it can be followed with action on buttons inside each new li
 const addNewItem = (e) => {
   e.preventDefault();
   if (newValue) {
-    let newClone = todolistUl.querySelector('li').cloneNode(true);
-    newClone.querySelector('.todolist__single-todo-wrapper span').innerText = newValue;
-    todolistUl.appendChild(newClone);
+    let newItem = createNewItem();
+    newItem.querySelector('.todolist__single-todo-wrapper span').innerText = newValue;
+    todolistUl.appendChild(newItem);
     allTasks = todolistUl.querySelectorAll('li');
     todoButtons = document.querySelectorAll('.todolist__button');
     loadbuttons();
@@ -26,33 +97,38 @@ const addNewItem = (e) => {
   }
 }
 
+//adds new item, clears input and variable, so after multiple submit button being pressed it wont add more same todos
 submitButton.addEventListener("click", function(e) {
   addNewItem(e);
   newTodoInput.value="";
   newValue="";
 })
 
-
+//if user press cancel button while editing, it adds d-none class to form and removes it from todo
 const cancelButton = (item) => {
-  const editButton = item.querySelector('.todolist__single-todo-edit').querySelector('.btn-cancel');
+  const cancelBtn = item.querySelector('.todolist__single-todo-edit').querySelector('.btn-cancel');
 
-  editButton.addEventListener("click", function() {
-      item.querySelector('.todolist__single-todo-edit').classList.add('d-none');
-      item.querySelector('.todolist__single-todo-wrapper').classList.add('d-flex');
-      item.querySelector('.todolist__single-todo-wrapper').classList.remove('d-none');
-  })
+  cancelBtn.addEventListener("click", function() {
+      // item.querySelector('.todolist__single-todo-edit').classList.add('d-none');
+      // item.querySelector('.todolist__single-todo-wrapper').classList.add('d-flex');
+      // item.querySelector('.todolist__single-todo-wrapper').classList.remove('d-none');
+      closeEdit(item);
+    })
 }
 
+// function to hide editing form, and bring back todo
 const closeEdit = (item) => {
   item.querySelector('.todolist__single-todo-wrapper').classList.remove('d-none');
   item.querySelector('.todolist__single-todo-wrapper').classList.add('d-flex');
   item.querySelector('.todolist__single-todo-edit').classList.add('d-none');
 }
 
+//asign value of existing todo to form
 const editToDoValue = (valueToDo, input) => {
   input.value = valueToDo;
 }
 
+//function to save changes. If users todo has changed, function overwrites old span with new, it's same, it triggers closeEdit function.
 const saveChanges = (item) => {
   const saveButton = item.querySelector('.todolist__single-todo-edit').querySelector('.btn-save');
   const inputValue = item.querySelector('input');
@@ -86,6 +162,8 @@ const saveChanges = (item) => {
 
 }
 
+
+// function which loads buttons from li. When user press delete, it removes current li, when presses completed, it adds completed class, when he press edit, it assign current value of span to variable singleTodoValue, then listen for changes from editToDoValue function.
 const loadbuttons = () => {
   todoButtons.forEach(item => {
 

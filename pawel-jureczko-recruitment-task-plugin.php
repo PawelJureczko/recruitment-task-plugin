@@ -25,24 +25,27 @@ function addThemeStyles() {
   wp_enqueue_style('style_file' , plugin_dir_url(__FILE__).'/css/plugin_styles.css');
 }
 
+//adding bootstrap css cdn
 function todoPJ_enqueueBootstrapCSS()
 {
     wp_register_style('prefix_bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
     wp_enqueue_style('prefix_bootstrap');
 }
 
+//adds script file and put it on footer (true - last parameter)
 function addThemeScript() {
   wp_enqueue_script('js-file', plugin_dir_url(__FILE__).'/js/plugin_pj_script.js', '', '1.0.0', true);
 }
 
+//assign google fonts to variable
 function addGoogleFont() {
   $googleFont = '<link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Reggae+One&display=swap" rel="stylesheet">';
   echo $googleFont;
-
-//font-family: 'Reggae One', cursive;
 }
 
+
+//main function which returns html with todolist
 function mainToDoList() {
   return '
   <div class="todolist">
@@ -59,57 +62,7 @@ function mainToDoList() {
         </div>
         <div class="col-12 my-5">
           <ul class="todolist__list px-xl-5">
-            <li>
-              <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
-                <span>first task</span>
-                <div class="todolist__button-wrapper d-flex align-items-between align-items-md-center flex-column flex-md-row">
-                  <div class="todolist__button todolist__button--completed"></div>
-                  <div class="todolist__button todolist__button--edit"></div>
-                  <div class="todolist__button todolist__button--delete"></div>
-                </div>
-              </div> <!-- todlist__single-todo-wrapper -->
-              <div class="todolist__single-todo-edit d-none">
-                <input type="text" name="task-edit" value="">
-                <div class="d-flex flex-column flex-md-row">
-                  <button class="btn btn-save">save</button>
-                  <button class="btn btn-cancel">cancel</button>
-                </div>
-              </div> <!-- todlist__single-todo-edit -->
-            </li>
-            <li>
-              <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
-                <span>second task</span>
-                <div class="todolist__button-wrapper d-flex align-items-between align-items-md-center flex-column flex-md-row">
-                  <div class="todolist__button todolist__button--completed"></div>
-                  <div class="todolist__button todolist__button--edit"></div>
-                  <div class="todolist__button todolist__button--delete"></div>
-                </div>
-              </div> <!-- todlist__single-todo-wrapper -->
-              <div class="todolist__single-todo-edit d-none">
-                <input type="text" name="task-edit" value="">
-                <div class="d-flex flex-column flex-md-row">
-                  <button class="btn btn-save">save</button>
-                  <button class="btn btn-cancel">cancel</button>
-                </div>
-              </div> <!-- todlist__single-todo-edit -->
-            </li>
-            <li>
-              <div class="todolist__single-todo-wrapper d-flex justify-content-between align-items-center">
-                <span>third task</span>
-                <div class="todolist__button-wrapper d-flex align-items-between align-items-md-center flex-column flex-md-row">
-                  <div class="todolist__button todolist__button--completed"></div>
-                  <div class="todolist__button todolist__button--edit"></div>
-                  <div class="todolist__button todolist__button--delete"></div>
-                </div>
-              </div> <!-- todlist__single-todo-wrapper -->
-              <div class="todolist__single-todo-edit d-none">
-                <input type="text" name="task-edit" value="">
-                <div class="d-flex flex-column flex-md-row">
-                  <button class="btn btn-save">save</button>
-                  <button class="btn btn-cancel">cancel</button>
-                </div>
-              </div> <!-- todlist__single-todo-edit -->
-            </li>
+
           </ul>
         </div>
       </div>
@@ -117,7 +70,7 @@ function mainToDoList() {
   </div>';
 }
 
-
+// functions which triggers functions from above
 add_action('wp_enqueue_scripts', 'addThemeStyles');
 add_action('wp_enqueue_scripts', 'addThemeScript');
 add_action('wp_head', 'todoPJ_enqueueBootstrapCSS');
