@@ -76,4 +76,4 @@ add_action('wp_enqueue_scripts', 'addThemeScript');
 add_action('wp_head', 'todoPJ_enqueueBootstrapCSS');
 add_action('wp_head', 'addGoogleFont');
 
-add_shortcode('example', 'mainToDoList');
+add_shortcode('pj-todolist-plugin', 'mainToDoList');
