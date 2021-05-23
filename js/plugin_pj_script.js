@@ -163,31 +163,31 @@ const saveChanges = (item) => {
 }
 
 
-// function which loads buttons from li. When user press delete, it removes current li, when presses completed, it adds completed class, when he press edit, it assign current value of span to variable singleTodoValue, then listen for changes from editToDoValue function.
+// function which loads buttons from li. When user press delete, it removes current li, when presses completed, it adds completed class, when he press edit (and current todo isnt completed), it assign current value of span to variable singleTodoValue, then listen for changes from editToDoValue function.
 const loadbuttons = () => {
   todoButtons.forEach(item => {
-
   item.addEventListener("click", function () {
     if (item.classList.contains('todolist__button--delete')) {
       item.parentElement.parentElement.parentElement.remove();
     } else if (item.classList.contains("todolist__button--completed")) {
-      item.parentElement.parentElement.parentElement.classList.toggle('completed');
+      if (!item.parentElement.parentElement.parentElement.classList.contains('completed')) {
+        item.parentElement.parentElement.parentElement.classList.add('completed');
+      }
     } else if (item.classList.contains("todolist__button--edit")) {
-      const mainLi = item.parentElement.parentElement.parentElement;
-      const toDoSpan = mainLi.querySelector('.todolist__single-todo-wrapper').querySelector('span');
-      const singleTodoValue = toDoSpan.innerText;
-      const inputTodo = mainLi.querySelector('.todolist__single-todo-edit').querySelector('input');
+        if (!item.parentElement.parentElement.parentElement.classList.contains('completed')) {
+        const mainLi = item.parentElement.parentElement.parentElement;
+        const toDoSpan = mainLi.querySelector('.todolist__single-todo-wrapper').querySelector('span');
+        const singleTodoValue = toDoSpan.innerText;
+        const inputTodo = mainLi.querySelector('.todolist__single-todo-edit').querySelector('input');
 
-      mainLi.querySelector('.todolist__single-todo-edit').classList.remove('d-none');
-      mainLi.querySelector('.todolist__single-todo-wrapper').classList.remove('d-flex');
-      mainLi.querySelector('.todolist__single-todo-wrapper').classList.add('d-none');
-      cancelButton(mainLi);
-      editToDoValue(singleTodoValue, inputTodo);
-      saveChanges(mainLi);
+        mainLi.querySelector('.todolist__single-todo-edit').classList.remove('d-none');
+        mainLi.querySelector('.todolist__single-todo-wrapper').classList.remove('d-flex');
+        mainLi.querySelector('.todolist__single-todo-wrapper').classList.add('d-none');
+        cancelButton(mainLi);
+        editToDoValue(singleTodoValue, inputTodo);
+        saveChanges(mainLi);
+      }
     }
-
   })
 })
 }
-
-loadbuttons();
